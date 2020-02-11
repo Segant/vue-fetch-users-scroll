@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .users{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .users-count{
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            font-family: Arial;
+        }
+
+        .user{
+            font-family:Arial, Helvetica, sans-serif;
+            margin: 10px;
+            max-width: 300px;
+            width: 100%;
+            background: grey;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #fff;
+            /* display: flex; */
+        }
+
+        .user__picture{
+            display: flex;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px;
+            max-width: 72px;
+        }
+
+        .user.female{
+            background-color: pink;
+            color: #000;
+        }
+
+        .user__name{
+            font-size: 16px;
+            margin-top: 0;
+        }
+
+        .user__left{
+            flex-grow: 1;
+            padding: 10px;
+        }
+
+    </style>
+    <h1>fetch from randomuser.org</h1>
+    <div id="app">
+        <div class="users-count">
+            <div>persons: {{usersCount}}</div>
+            <div>males: {{malesCount}}</div>
+            <div>females: {{femalesCount}}</div>
+        </div>
+        <div class="users">
+
+            <div class="user" :class="user.gender" v-for="(user, i) in users" :key="user.userId">
+                <div class="user__picture">
+                    <img v-bind:src="user.image" :alt="i">
+                </div>
+                <div class="user__left">
+                    <h2 class="user__name">{{user.name}} {{user.sname}}</h2>
+
+                    <div>
+                        {{user.email}}
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
